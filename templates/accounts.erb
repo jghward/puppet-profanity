@@ -1,0 +1,22 @@
+[<%= @name %>]
+enabled=true
+jid=<%= (defined? @jid) ? @jid : @name %>
+resource=<%= @resource %>
+muc.service=<%= (defined? @muc) ? @muc : ((defined? @jid) ? "conference.#{@jid.split('@')[1]}" : "conference.#{@name}") %>
+muc.nick=<%= (defined? @nick) ? @nick : @name %>
+presence.last=online
+presence.login=<%= @login_presence %>
+priority.online=0
+priority.chat=0
+priority.away=0
+priority.xa=0
+priority.dnd=0
+<% if (defined? @port) -%>
+port=<%= @port %>
+<% end -%>
+<% if (defined? @password) -%>
+password=<%= @password %>
+<% end -%>
+<% if (defined? @eval_password) -%>
+eval_password=<%= @eval_password %>
+<% end %>
