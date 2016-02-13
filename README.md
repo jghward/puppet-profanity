@@ -1,7 +1,11 @@
 # puppet-profanity
 A Puppet module to install and configure the Profanity chat client
 
-##Dependencies
+#Compatibility
+Requires Puppet 4.0.0 or higher
+Ubuntu is currently the only supported OS
+
+##Dependencies:
 puppetlabs/concat
 
 puppetlabs/vcsrepo
