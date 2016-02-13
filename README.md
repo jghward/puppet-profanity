@@ -67,7 +67,7 @@ This is due to a bugfix in puppetlabs/vcsrepo that has not yet made it to the ve
 
 Until then, either apply this change yourself, or get vcsrepo directly from GitHub.
 
-##TODO
+##TODO:
 Manage the profanityrc file
 
 Support more operating systems
