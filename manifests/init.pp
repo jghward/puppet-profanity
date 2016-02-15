@@ -13,7 +13,7 @@ class profanity(
   Hash    $accounts               = $profanity::params::accounts,
 ) inherits profanity::params {
 
-  $supported = ['Ubuntu']
+  $supported = ['Ubuntu', 'Debian', 'CentOS']
 
   if ! ($operatingsystem in $supported) {
     notice("Unsupported OS. Please install manually.")
@@ -34,7 +34,7 @@ class profanity(
       include profanity::package
     }
     else {
-      class { 'profanity::prerequisites': } ->
+      class { 'profanity::prerequisites': } ~>
       class { 'profanity::install': }
     }
 

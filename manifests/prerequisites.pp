@@ -39,4 +39,10 @@ class profanity::prerequisites {
     command     => 'make install',
   }
 
+  if $operatingsystem in ['CentOS'] {
+    exec { '/sbin/ldconfig':
+      subscribe => Exec["make install in ${libstrophe_tmp_dir}"],
+    }
+  }
+
 }

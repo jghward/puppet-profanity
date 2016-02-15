@@ -17,6 +17,15 @@ class profanity::params {
         'libreadline-dev', 'libtool', 'libgpgme11-dev', 'uuid-dev'
       ]
     }
+    'CentOS': {
+      $prerequisites = [
+        'epel-release', 'git', 'automake', 'gcc', 'autoconf',
+        'cmake', 'openssl-devel', 'expat-devel', 'ncurses-devel',
+        'glib2-devel', 'libnotify-devel', 'libcurl-devel',
+        'libXScrnSaver-devel', 'libotr-devel', 'readline-devel',
+        'libtool', 'gpgme-devel', 'libuuid-devel'
+      ]
+    }
     default:              {}
   }
   $version = '0.4.7'
