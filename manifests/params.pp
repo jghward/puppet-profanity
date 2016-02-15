@@ -4,12 +4,20 @@ class profanity::params {
   $install_from_package = false
 
   # Manual install
-  $prerequisites = $::operatingsystem ? {
-    'Ubuntu' => ['git', 'automake', 'autoconf', 'libssl-dev',
-      'libexpat1-dev', 'libncursesw5-dev', 'libglib2.0-dev', 'libnotify-dev',
-      'libcurl3-dev', 'libxss-dev', 'libotr5-dev', 'libreadline-dev', 'libtool',
-      'libgpgme11-dev', 'uuid-dev'],
-    default  => [],
+  case $::operatingsystem {
+    'Ubuntu', 'Debian': {
+      $libotr_package = $::lsbdistcodename ? {
+        /^(wheezy|precise)$/     => 'libotr2-dev',
+        default                  => 'libotr5-dev',
+      }
+      $prerequisites = [
+        'git', 'automake', 'autoconf', 'libssl-dev', 'libexpat1-dev',
+        'libncursesw5-dev', 'libglib2.0-dev', 'libnotify-dev',
+        'libcurl4-openssl-dev', 'libxss-dev', $libotr_package,
+        'libreadline-dev', 'libtool', 'libgpgme11-dev', 'uuid-dev'
+      ]
+    }
+    default:              {}
   }
   $version = '0.4.7'
   $url = 'https://github.com/boothj5/profanity.git'
