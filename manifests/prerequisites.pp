@@ -20,10 +20,11 @@ class profanity::prerequisites {
     source     => $libstrophe_url,
     revision   => $libstrophe_version,
     submodules => false,
-  } ~>
+  }
 
   exec { "bootstrap.sh in ${libstrophe_tmp_dir}":
-    command => "${libstrophe_tmp_dir}/bootstrap.sh",
+    command   => "${libstrophe_tmp_dir}/bootstrap.sh",
+    subscribe => [Package[$prerequisites], Vcsrepo[$libstrophe_tmp_dir]],
   } ~>
 
   exec { "configure in ${libstrophe_tmp_dir}":
