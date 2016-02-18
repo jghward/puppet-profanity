@@ -14,17 +14,23 @@ class profanity::prerequisites {
     ensure => installed,
   } ->
 
-  vcsrepo { $libstrophe_tmp_dir:
+#  vcsrepo { $libstrophe_tmp_dir:
+#    ensure     => present,
+#    provider   => git,
+#    source     => $libstrophe_url,
+#    revision   => $libstrophe_version,
+#    submodules => false,
+#  }
+
+  profanity::gitrepo { $libstrophe_tmp_dir:
     ensure     => present,
-    provider   => git,
     source     => $libstrophe_url,
     revision   => $libstrophe_version,
-    submodules => false,
   }
 
   exec { "bootstrap.sh in ${libstrophe_tmp_dir}":
     command   => "${libstrophe_tmp_dir}/bootstrap.sh",
-    subscribe => [Package[$prerequisites], Vcsrepo[$libstrophe_tmp_dir]],
+    subscribe => [Package[$prerequisites], Profanity::Gitrepo[$libstrophe_tmp_dir]],
   } ~>
 
   exec { "configure in ${libstrophe_tmp_dir}":
