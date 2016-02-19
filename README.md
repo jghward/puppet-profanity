@@ -1,5 +1,5 @@
 # puppet-profanity
-A Puppet module to install and configure the Profanity chat client
+A Puppet module to install and configure the Profanity chat client http://www.profanity.im
 
 ##Compatibility
 Requires Puppet 4.0.0 or higher
