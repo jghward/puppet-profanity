@@ -64,6 +64,8 @@ profanity::account { 'dave_work':
 }
 ```
 
+The profrc file can also be managed by setting $manage_profrc to true and uncommenting the required settings in params.pp.
+
 ##TODO:
 Manage the profanityrc file
 
