@@ -1,16 +1,16 @@
 [<%= @name %>]
-enabled=true
+enabled=<%= @enabled %>
 jid=<%= (defined? @jid) ? @jid : @name %>
 resource=<%= @resource %>
 muc.service=<%= (defined? @muc) ? @muc : ((defined? @jid) ? "conference.#{@jid.split('@')[1]}" : "conference.#{@name}") %>
 muc.nick=<%= (defined? @nick) ? @nick : @name %>
 presence.last=online
-presence.login=<%= @login_presence %>
-priority.online=0
-priority.chat=0
-priority.away=0
-priority.xa=0
-priority.dnd=0
+presence.login=<%= @status %>
+priority.online=<%= (defined? @priority_online) ? @priority_online : 0 %>
+priority.chat=<%= (defined? @priority_chat) ? @priority_chat : 0 %>
+priority.away=<%= (defined? @priority_away) ? @priority_away : 0 %>
+priority.xa=<%= (defined? @priority_xa) ? @priority_xa : 0 %>
+priority.dnd=<%= (defined? @priority_dnd) ? @priority_dnd : 0 %>
 <% if (defined? @port) -%>
 port=<%= @port %>
 <% end -%>

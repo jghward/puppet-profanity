@@ -111,13 +111,18 @@ class profanity::params {
   $manage_accounts = true
   $accounts        = {
     #'me' => {
-      #'jid'    => 'me@chatty',
-      #'server' => 'talk.chat.com',
-      #'port'   => '5111',
-      #'muc'    => 'chatservice.mycompany.com',
-      #'nick'   => 'dennis',
-      #'status' => 'dnd',
-      #'dnd'    => '-1',
+      #'enabled'         => 'true',
+      #'jid'             => 'me@chatty',
+      #'server'          => 'talk.chat.com',
+      #'port'            => '5111',
+      #'muc'             => 'chatservice.mycompany.com',
+      #'nick'            => 'dennis',
+      #'status'          => 'dnd',
+      #'priority_online' => 0,
+      #'priority_chat'   => 0,
+      #'priority_away'   => 0,
+      #'priority_xa'     => 0,
+      #'priority_dnd'    => -1,
     #},
   }
 

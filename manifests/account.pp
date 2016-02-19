@@ -2,7 +2,8 @@ define profanity::account(
   String  $user            = 'root',
   String  $ensure          = 'present',
   Boolean $default_account = false,
-  String  $login_presence  = 'online',
+  String  $enabled         = 'true',
+  String  $status          = 'online',
   String  $resource        = 'profanity',
   Any     $jid             = undef,
   Any     $server          = undef,
@@ -13,6 +14,11 @@ define profanity::account(
   Any     $nick            = undef,
   Any     $otr             = undef,
   Any     $pgpkeyid        = undef,
+  Integer $priority_online = 0,
+  Integer $priority_chat   = 0,
+  Integer $priority_away   = 0,
+  Integer $priority_xa     = 0,
+  Integer $priority_dnd    = 0,
 ) {
 
   include profanity::configure

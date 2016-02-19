@@ -25,9 +25,4 @@ class profanity::configure {
     mode   => '0700',
   }
 
-  concat { "${data_home}/profanity/accounts":
-    ensure => present,
-    mode   => '0600',
-  }
-
 }

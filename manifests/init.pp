@@ -43,7 +43,7 @@ class profanity(
     include profanity::configure
 
     if $manage_accounts {
-      create_resources(profanity::account, $accounts)
+      include profanity::accounts
     }
 
     if $manage_profrc {
