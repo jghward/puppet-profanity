@@ -29,24 +29,26 @@ Optionally override the default parameters (in params.pp) by using the 'class' s
 
 ```
 class { 'profanity':
-  version              => '0.4.3',
+  version              => '0.4.7',
   install_from_package => true,
   manage_accounts      => false,
+  manage_profrc        => true,
 }
 ```
 
-If 'manage_accounts' is true (the default), a hash of accounts can be passed in using the 'accounts' param:
+If $manage_accounts is true (the default), a hash of accounts can be passed in using the $accounts param:
 
 ```
 $accounts = {
-  'dave' => {
-    'jid'  => 'dave@foobar.baz',
-    'nick' => 'Dave',
+  'me' => {
+    'jid'    => 'me@chatty',
+    'server' => 'talk.chat.com',
+    'port'   => '5111',
+    'muc'    => 'chatservice.mycompany.com',
+    'nick'   => 'dennis',
+    'status' => 'dnd',
+    'dnd'    => '-1',
   },
-  'hipchat' => {
-    'jid' => '123456-7890@chat.hipchat.com',
-    'muc' => 'conf.hipchat.com',
-  }
 }
 
 class { 'profanity':
@@ -58,16 +60,16 @@ You can also use the 'profanity::account' defined type directly in your Puppet c
 
 ```
 profanity::account { 'dave_work':
-  jid      => 'dave@mycompany.com',
+  jid      => 'dave@mycompany',
   presence => 'Profanity-work',
   nick     => 'Employee #4354',
 }
 ```
+All parameters are optional.
 
 The profrc file can also be managed by setting $manage_profrc to true and uncommenting the required settings in params.pp.
 
 ##TODO:
-Manage the profanityrc file
 
 Support more operating systems
 
