@@ -14,14 +14,6 @@ class profanity::prerequisites {
     ensure => installed,
   } ->
 
-#  vcsrepo { $libstrophe_tmp_dir:
-#    ensure     => present,
-#    provider   => git,
-#    source     => $libstrophe_url,
-#    revision   => $libstrophe_version,
-#    submodules => false,
-#  }
-
   profanity::gitrepo { $libstrophe_tmp_dir:
     ensure     => present,
     source     => $libstrophe_url,

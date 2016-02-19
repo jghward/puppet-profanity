@@ -8,14 +8,6 @@ class profanity::install {
     cwd => $tmp_dir,
   }
 
-#  vcsrepo { $tmp_dir:
-#    ensure     => present,
-#    provider   => git,
-#    source     => $url,
-#    revision   => $version,
-#    submodules => false,
-#  } ~>
-
   profanity::gitrepo { $tmp_dir:
     ensure     => present,
     source     => $url,
