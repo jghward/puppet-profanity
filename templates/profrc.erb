@@ -1,0 +1,6 @@
+<% @profrc_settings.each_pair do |section,settings| -%>
+[<%= section %>]
+<% settings.each_pair do |key,value| -%>
+<%= key.gsub('_', '.') %>=<%=value%>
+<% end %>
+<% end -%>

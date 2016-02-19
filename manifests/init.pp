@@ -11,6 +11,8 @@ class profanity(
   String  $user                   = $profanity::params::user,
   Boolean $manage_accounts        = $profanity::params::manage_accounts,
   Hash    $accounts               = $profanity::params::accounts,
+  Boolean $manage_profrc          = $profanity::params::manage_profrc,
+  Hash    $profrc_settings        = $profanity::params::profrc_settings,
 ) inherits profanity::params {
 
   $supported = ['Ubuntu', 'Debian', 'CentOS']
@@ -41,7 +43,11 @@ class profanity(
     include profanity::configure
 
     if $manage_accounts {
-     create_resources(profanity::account, $accounts)
+      create_resources(profanity::account, $accounts)
+    }
+
+    if $manage_profrc {
+      include profanity::profrc
     }
   }
 }

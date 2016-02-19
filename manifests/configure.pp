@@ -20,11 +20,6 @@ class profanity::configure {
     mode   => '0700',
   }
 
-  file { "${config_home}/profanity/profrc":
-    ensure => present,
-    mode   => '0600',
-  }
-
   file { "${data_home}/profanity":
     ensure => directory,
     mode   => '0700',
