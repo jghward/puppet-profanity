@@ -59,8 +59,8 @@ class { 'profanity':
 You can also use the 'profanity::account' defined type directly in your Puppet code:
 
 ```
-profanity::account { 'dave_work':
-  jid      => 'dave@mycompany',
+profanity::account { 'me_work':
+  jid      => 'me@mycompany',
   presence => 'Profanity-work',
   nick     => 'Employee #4354',
 }
