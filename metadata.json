@@ -1,6 +1,6 @@
 {
   "name": "jon6000-profanity",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "author": "Jon Ward",
   "summary": "A Puppet module to install and manage Profanity XMPP client.",
   "license": "Apache-2.0",
@@ -8,8 +8,26 @@
   "project_page": "https://github.com/jghward/puppet-profanity",
   "issues_url": "https://github.com/jghward/puppet-profanity/issues",
   "dependencies": [
-    {"name":"puppetlabs-concat","version_requirement":">= 2.1.0"}
+    {"name":"puppetlabs-concat","version_requirement":">= 2.1.0 < 3.0.0"}
   ],
   "data_provider": null
+  "operatingsystem_support": [
+  {
+  "operatingsystem":"Debian",
+  "operatingsystemrelease":[ "7.0", "8.0" ]
+  },
+  {
+  "operatingsystem": "Ubuntu",
+  "operatingsystemrelease": [
+    "12.04",
+    "14.04",
+    "15.10"
+    ]
+  },
+  {
+  "operatingsystem": "CentOS",
+  "operatingsystemrelease":[ "7.0" ]
+  }
+]
 }
 
