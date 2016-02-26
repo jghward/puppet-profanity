@@ -1,3 +1,35 @@
+# Class: profanity
+# ===========================
+#
+# Will ensure that Profanity and its dependencies are installed, and any
+# specified accounts are managed. This class sets parameters that are used
+# by other classes in the module and includes the classes that do the actual
+# work.
+#
+# Parameters
+# ----------
+#
+# All parameters are obtained from profanity::params by default and can be
+# overridden.
+#
+# Variables
+# ----------
+#
+# * `supported`
+#  A list of currently supported operating systems. The 'operatingsystem' fact
+#  is checked against this list to decide whether this module will attempt to
+#  manage Profanity.
+#
+# Authors
+# -------
+#
+# Jon Ward <jghward+puppet@gmail.com>
+#
+# Copyright
+# ---------
+#
+# Copyright 2016 Jon Ward.
+#
 class profanity(
   Boolean $install_from_package   = $profanity::params::install_from_package,
   Array   $prerequisites          = $profanity::params::prerequisites,

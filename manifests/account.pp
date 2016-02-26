@@ -1,3 +1,20 @@
+# Define: profanity::account
+# ===========================
+#
+# Creates a fragment of the accounts file.
+# For more information about Profanity account settings, see
+# http://profanity.im/reference.html#account
+#
+# Authors
+# -------
+#
+# Jon Ward <jghward+puppet@gmail.com>
+#
+# Copyright
+# ---------
+#
+# Copyright 2016 Jon Ward.
+#
 define profanity::account(
   String  $user            = 'root',
   String  $ensure          = 'present',

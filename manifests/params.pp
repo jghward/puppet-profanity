@@ -1,3 +1,82 @@
+# Class: profanity::params
+# ===========================
+#
+# Inherited by the main profanity class, this class sets default values for
+# all params defined there.
+#
+# Variables
+# ----------
+#
+# * `install_from_package`
+#  If true, profanity::package will be calledby the main class. Otherwise,
+#  profanity::prerequisites followed by profanity::install are called.
+#
+# * `libotr_package`
+#  The libotr package to install as a prerequisite. Differs depending on OS
+#  version.
+#
+# * `prerequisites`
+#  The packages installed by profanity::prerequisites. Differs depending on OS
+#  version.
+#
+# * `version`
+#  The version of Profanity to install. This is the tag that is checked out
+#  from the Git repository if installing from source.
+#
+# * `url`
+#  The location of the remote Profanity source.
+#
+# * `tmp_dir`
+#  The location of the Profanity source on the system from where it
+#  will be built.
+#
+# * `libstrophe_version`
+#  The version of the XMPP library required by Profanity.
+#
+# * `libstrophe_url`
+#  The location of the remote XMPP library source.
+#
+# * `libstrophe_tmp_dir`
+#  The location of the XMPP library source on the system from where it will be
+#  built.
+#
+# * `user`
+#  The system user to manage Profanity for.
+#
+# * `config_home`
+#  The parent directory to use for Profanity configuration files including
+#  profrc.
+#
+# * `data_home_parent`
+#  The parent directory to use for Profanity data including accounts
+#  information.
+#
+# * `data_home`
+#  The directory to use for Profanity data.
+#
+# * `manage_profrc`
+#  If true, the module will manage the profrc file. Any manually added data to
+#  profrc will be purged.
+#
+# * `profrc_settings`
+#  A hash of values used to populate the profrc file.
+#
+# * `manage_accounts`
+#  If true, use profanity::account to populate the accounts file.
+#
+# * `accounts`
+#  A hash of accounts used the populate the accounts file.
+#
+# Authors
+# -------
+#
+# Jon Ward <jghward+puppet@gmail.com>
+#
+# Copyright
+# ---------
+#
+# Copyright 2016 Jon Ward.
+#
 class profanity::params {
 
   # Install through package manager if available

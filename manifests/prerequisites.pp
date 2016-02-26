@@ -1,3 +1,19 @@
+# Class: profanity::prerequisites
+# ===========================
+#
+# This class installs the prerequisite packages in $profanity::prerequisites
+# and the XMPP library from source.
+#
+# Authors
+# -------
+#
+# Jon Ward <jghward+puppet@gmail.com>
+#
+# Copyright
+# ---------
+#
+# Copyright 2016 Jon Ward.
+#
 class profanity::prerequisites {
 
   $prerequisites          = $profanity::prerequisites

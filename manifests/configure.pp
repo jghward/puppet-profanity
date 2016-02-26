@@ -1,3 +1,18 @@
+# Class: profanity::configure
+# ===========================
+#
+# This class creates the data and configuration file directories.
+#
+# Authors
+# -------
+#
+# Jon Ward <jghward+puppet@gmail.com>
+#
+# Copyright
+# ---------
+#
+# Copyright 2016 Jon Ward.
+#
 class profanity::configure {
 
   $user             = $profanity::user

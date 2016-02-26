@@ -1,3 +1,18 @@
+# Class: profanity::package
+# ===========================
+#
+# This class will install Profanity from source if not already installed.
+#
+# Authors
+# -------
+#
+# Jon Ward <jghward+puppet@gmail.com>
+#
+# Copyright
+# ---------
+#
+# Copyright 2016 Jon Ward.
+#
 class profanity::install {
 
   $url     = $profanity::url
