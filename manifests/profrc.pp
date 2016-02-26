@@ -8,6 +8,6 @@ class profanity::profrc {
     ensure  => present,
     content => template("${module_name}/profrc.erb"),
     mode    => '0600',
-  }  
+  }
 
 }

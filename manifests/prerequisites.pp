@@ -15,9 +15,9 @@ class profanity::prerequisites {
   } ->
 
   profanity::gitrepo { $libstrophe_tmp_dir:
-    ensure     => present,
-    source     => $libstrophe_url,
-    revision   => $libstrophe_version,
+    ensure   => present,
+    source   => $libstrophe_url,
+    revision => $libstrophe_version,
   }
 
   exec { "bootstrap.sh in ${libstrophe_tmp_dir}":
@@ -37,7 +37,7 @@ class profanity::prerequisites {
     command     => 'make install',
   }
 
-  if $operatingsystem in ['CentOS'] {
+  if $::operatingsystem in ['CentOS'] {
     exec { '/sbin/ldconfig':
       subscribe => Exec["make install in ${libstrophe_tmp_dir}"],
     }

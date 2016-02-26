@@ -9,9 +9,9 @@ class profanity::install {
   }
 
   profanity::gitrepo { $tmp_dir:
-    ensure     => present,
-    source     => $url,
-    revision   => $version,
+    ensure   => present,
+    source   => $url,
+    revision => $version,
   } ~>
 
   exec { "bootstrap.sh in ${tmp_dir}":

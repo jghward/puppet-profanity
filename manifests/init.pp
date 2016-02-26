@@ -17,8 +17,8 @@ class profanity(
 
   $supported = ['Ubuntu', 'Debian', 'CentOS']
 
-  if ! ($operatingsystem in $supported) {
-    notice("Unsupported OS. Please install manually.")
+  if ! ($::operatingsystem in $supported) {
+    notice('Unsupported OS. Please install manually.')
     $install = false
   }
   else {

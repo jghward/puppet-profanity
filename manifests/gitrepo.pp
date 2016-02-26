@@ -22,15 +22,15 @@ define profanity::gitrepo(
     } ->
 
     exec { "checkout ${target} ${revision}":
-      cwd     => "${target_dir}/${name}",
+      cwd     => $target,
       command => "git checkout ${revision}",
       unless  => "git tag 2> /dev/null | grep '^${revision}$'",
     }
   }
   elsif $ensure == 'absent' {
-    file { "${target}/${name}":
+    file { $target:
       ensure => absent,
-    } 
+    }
   }
 
 }

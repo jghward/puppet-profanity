@@ -4,4 +4,4 @@ class profanity::package {
     ensure => installed,
   }
 
-}  
+}
