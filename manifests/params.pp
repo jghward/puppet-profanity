@@ -190,7 +190,7 @@ class profanity::params {
   $manage_accounts = false
   $accounts        = {
     #'me' => {
-      #'enabled'         => 'true',
+      #'enabled'         => true,
       #'jid'             => 'me@chatty',
       #'server'          => 'talk.chat.com',
       #'port'            => '5111',

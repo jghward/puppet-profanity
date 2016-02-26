@@ -19,7 +19,7 @@ define profanity::account(
   String  $user            = 'root',
   String  $ensure          = 'present',
   Boolean $default_account = false,
-  String  $enabled         = 'true',
+  Boolean $enabled         = true,
   String  $status          = 'online',
   String  $resource        = 'profanity',
   Any     $jid             = undef,
