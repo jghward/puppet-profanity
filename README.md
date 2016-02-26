@@ -36,7 +36,7 @@ class { 'profanity':
 }
 ```
 
-If $manage_accounts is true (the default), a hash of accounts can be passed in using the $accounts param:
+If $manage_accounts is true, a hash of accounts can be passed in using the $accounts param:
 
 ```
 $accounts = {

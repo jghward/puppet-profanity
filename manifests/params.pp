@@ -130,7 +130,7 @@ class profanity::params {
   $data_home = "${data_home_parent}/share"
 
   # profrc file
-  $manage_profrc   = true
+  $manage_profrc   = false
   $profrc_settings = {
     #'ui'            => {
       #splash           => 'true',
@@ -187,7 +187,7 @@ class profanity::params {
   }
 
   # Account configuration details
-  $manage_accounts = true
+  $manage_accounts = false
   $accounts        = {
     #'me' => {
       #'enabled'         => 'true',
