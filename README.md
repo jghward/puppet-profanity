@@ -46,8 +46,8 @@ Optionally override the default parameters (in params.pp) by using the 'class' s
 
 ```
 class { 'profanity':
-  version              => '0.4.7',
-  install_from_package => false,
+  install_from_package => true,
+  version              => '0.4.7-1',
   manage_accounts      => true,
   manage_profrc        => true,
 }
