@@ -67,10 +67,7 @@ class profanity(
     }
 
     if $install_from_package {
-      class { 'profanity::package':
-        package_name   => $package_name,
-        package_ensure => $package_ensure,
-      }
+      include profanity::package
     }
     else {
       class { 'profanity::prerequisites': } ~>

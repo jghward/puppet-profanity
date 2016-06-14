@@ -6,6 +6,15 @@
 # to true and this class will be called. Installs Profanity using the
 # 'package' resource type.
 #
+# Variables
+# ----------
+#
+# * `package_name`
+#  The name of the package in the package manager.
+#
+# * `package_ensure`
+#  Passed to the 'ensure' attribute of the package resource.
+#
 # Authors
 # -------
 #
@@ -16,10 +25,10 @@
 #
 # Copyright 2016 Jon Ward.
 #
-class profanity::package(
-  String $package_name,
-  String $package_ensure,
-){
+class profanity::package {
+
+  $package_name   = $profanity::package_name
+  $package_ensure = $profanity::package_ensure
 
   package { $package_name:
     ensure => $package_ensure,
