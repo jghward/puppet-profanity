@@ -11,6 +11,9 @@
 #  If true, profanity::package will be calledby the main class. Otherwise,
 #  profanity::prerequisites followed by profanity::install are called.
 #
+# * `package_version`
+#  If install_from_package is true, a package version can be specified.
+#
 # * `libotr_package`
 #  The libotr package to install as a prerequisite. Differs depending on OS
 #  version.
@@ -81,6 +84,7 @@ class profanity::params {
 
   # Install through package manager if available
   $install_from_package = false
+  $package_version      = 'latest'
 
   # Manual install
   case $::operatingsystem {
