@@ -16,10 +16,13 @@
 #
 # Copyright 2016 Jon Ward.
 #
-class profanity::package {
+class profanity::package(
+  String $package_name,
+  String $package_ensure,
+){
 
-  package { 'profanity':
-    ensure => installed,
+  package { $package_name:
+    ensure => $package_ensure,
   }
 
 }

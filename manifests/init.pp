@@ -32,6 +32,8 @@
 #
 class profanity(
   Boolean $install_from_package   = $profanity::params::install_from_package,
+  String  $package_name           = $profanity::params::package_name,
+  String  $package_ensure         = $profanity::params::package_ensure,
   Array   $prerequisites          = $profanity::params::prerequisites,
   String  $version                = $profanity::params::version,
   String  $url                    = $profanity::params::url,
@@ -65,7 +67,10 @@ class profanity(
     }
 
     if $install_from_package {
-      include profanity::package
+      class { 'profanity::package':
+        package_name   => $package_name,
+        package_ensure => $package_ensure,
+      }
     }
     else {
       class { 'profanity::prerequisites': } ~>
