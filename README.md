@@ -48,7 +48,6 @@ Optionally override the default parameters (in params.pp) by using the 'class' s
 class { 'profanity':
   install_from_package => true,
   package_ensure       => '0.4.7-1',
-  manage_accounts      => true,
   manage_profrc        => true,
 }
 ```
@@ -69,7 +68,8 @@ $accounts = {
 }
 
 class { 'profanity':
-  accounts => $accounts,
+  manage_accounts => true,
+  accounts        => $accounts,
 }
 ```
 
