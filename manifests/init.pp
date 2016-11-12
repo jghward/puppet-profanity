@@ -31,6 +31,7 @@
 # Copyright 2016 Jon Ward.
 #
 class profanity(
+  Array   $supported_os           = $profanity::params::supported_os,
   Boolean $install_from_package   = $profanity::params::install_from_package,
   String  $package_name           = $profanity::params::package_name,
   String  $package_ensure         = $profanity::params::package_ensure,
@@ -49,9 +50,7 @@ class profanity(
   Hash    $profrc_settings        = $profanity::params::profrc_settings,
 ) inherits profanity::params {
 
-  $supported = ['Ubuntu', 'Debian', 'CentOS']
-
-  if ! ($::operatingsystem in $supported) {
+  if ! ($::operatingsystem in $supported_os) {
     notice('Unsupported OS. Please install manually.')
     $install = false
   }

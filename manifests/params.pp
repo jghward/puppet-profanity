@@ -7,6 +7,8 @@
 # Variables
 # ----------
 #
+# * `supported_os`
+#  Array of supported operating systems.
 # * `install_from_package`
 #  If true, profanity::package will be calledby the main class. Otherwise,
 #  profanity::prerequisites followed by profanity::install are called.
@@ -86,8 +88,21 @@
 #
 class profanity::params {
 
-  # Install through package manager if available
-  $install_from_package = false
+  $supported_os = ['Ubuntu', 'Debian', 'CentOS']
+
+  # Install through package manager if available. Defaults to yes where known to be available.
+  $install_from_package = $::operatingsystem ? {
+    'Ubuntu' => $::os[release][full] ? {
+      '16.04' => true,
+      '16.10' => true,
+      default => false,
+    },
+    'Debian' => $os[release][major] ? {
+      '8'     => true,
+      default => false,
+    },
+    default  => false,
+  }
   $package_name         = 'profanity'
   $package_ensure       = 'installed'
 
@@ -116,7 +131,7 @@ class profanity::params {
     }
     default:              {}
   }
-  $version                = '0.4.7'
+  $version                = '0.5.0'
   $url                    = 'https://github.com/boothj5/profanity.git'
   $tmp_dir                = '/var/tmp/profanity'
   $libstrophe_version     = '0.8.8'
