@@ -19,9 +19,9 @@ class profanity::install {
   $version = $profanity::version
   $tmp_dir = $profanity::tmp_dir
 
-  $filename         = "profanity-${version}.tar.gz"
-  $full_url         = "${url}/${filename}"
-  $working_dir      = "${tmp_dir}/profanity-${version}"
+  $filename    = "profanity-${version}.tar.gz"
+  $full_url    = "${url}/${filename}"
+  $working_dir = "${tmp_dir}/profanity-${version}"
 
   Exec {
     cwd => $working_dir,

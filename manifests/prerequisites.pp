@@ -22,9 +22,9 @@ class profanity::prerequisites {
   $libmesode_url         = $profanity::libmesode_url
   $libmesode_version     = $profanity::libmesode_version
 
-  $libmesode_filename    = "profanity-${libmesode_version}.tar.gz"
+  $libmesode_filename    = "${libmesode_version}.zip"
   $libmesode_full_url    = "${libmesode_url}/${libmesode_filename}"
-  $libmesode_working_dir = "${libmesode_tmp_dir}/profanity-${libmesode_version}"
+  $libmesode_working_dir = "${libmesode_tmp_dir}/${libmesode_version}"
 
   Exec {
     cwd => $libmesode_working_dir,
