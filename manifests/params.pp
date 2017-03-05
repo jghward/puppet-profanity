@@ -135,7 +135,7 @@ class profanity::params {
     default:              {}
   }
   $version                = '0.5.1'
-  $profanity_url          = 'http://profanity.im'
+  $url          = 'http://profanity.im'
   $tmp_dir                = '/var/tmp'
   $libmesode_version      = '0.9.1'
   $libmesode_url          = 'https://github.com/boothj5/libmesode/archive'
