@@ -12,50 +12,58 @@
 # Copyright
 # ---------
 #
-# Copyright 2016 Jon Ward.
+# Copyright 2017 Jon Ward.
 #
 class profanity::prerequisites {
 
-  $prerequisites          = $profanity::prerequisites
-  $libstrophe_tmp_dir     = $profanity::libstrophe_tmp_dir
-  $libstrophe_install_dir = $profanity::libstrophe_install_dir
-  $libstrophe_url         = $profanity::libstrophe_url
-  $libstrophe_version     = $profanity::libstrophe_version
+  $prerequisites         = $profanity::prerequisites
+  $libmesode_tmp_dir     = $profanity::libmesode_tmp_dir
+  $libmesode_install_dir = $profanity::libmesode_install_dir
+  $libmesode_url         = $profanity::libmesode_url
+  $libmesode_version     = $profanity::libmesode_version
+
+  $libmesode_filename    = "profanity-${libmesode_version}.tar.gz"
+  $libmesode_full_url    = "${libmesode_url}/${libmesode_filename}"
+  $libmesode_working_dir = "${libmesode_tmp_dir}/profanity-${libmesode_version}"
 
   Exec {
-    cwd => $libstrophe_tmp_dir,
+    cwd => $libmesode_working_dir,
   }
 
   package { $prerequisites:
     ensure => installed,
   } ->
 
-  profanity::gitrepo { $libstrophe_tmp_dir:
-    ensure   => present,
-    source   => $libstrophe_url,
-    revision => $libstrophe_version,
+  staging::file { $libmesode_filename:
+    source => $libmesode_full_url,
   }
 
-  exec { "bootstrap.sh in ${libstrophe_tmp_dir}":
-    command   => "${libstrophe_tmp_dir}/bootstrap.sh",
-    subscribe => [Package[$prerequisites], Profanity::Gitrepo[$libstrophe_tmp_dir]],
+  staging::extract { $libmesode_filename:
+    target  => $libmesode_tmp_dir,
+    creates => $libmesode_working_dir,
+    require => Staging::File[$libmesode_filename],
+  }
+
+  exec { "bootstrap.sh in ${libmesode_working_dir}":
+    command   => "${libmesode_working_dir}/bootstrap.sh",
+    subscribe => [Package[$prerequisites], Staging::Extract[$libmesode_filename]],
   } ~>
 
-  exec { "configure in ${libstrophe_tmp_dir}":
-    command => "${libstrophe_tmp_dir}/configure --prefix=${libstrophe_install_dir}",
+  exec { "configure in ${libmesode_working_dir}":
+    command => "${libmesode_working_dir}/configure --prefix=${libmesode_install_dir}",
   } ~>
 
-  exec { "make in ${libstrophe_tmp_dir}":
+  exec { "make in ${libmesode_working_dir}":
     command => 'make',
   } ~>
 
-  exec { "make install in ${libstrophe_tmp_dir}":
+  exec { "make install in ${libmesode_working_dir}":
     command     => 'make install',
   }
 
   if $::operatingsystem in ['CentOS'] {
     exec { '/sbin/ldconfig':
-      subscribe => Exec["make install in ${libstrophe_tmp_dir}"],
+      subscribe => Exec["make install in ${libmesode_working_dir}"],
     }
   }
 

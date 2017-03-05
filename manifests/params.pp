@@ -39,15 +39,18 @@
 #  The location of the Profanity source on the system from where it
 #  will be built.
 #
-# * `libstrophe_version`
+# * `libmesode_version`
 #  The version of the XMPP library required by Profanity.
 #
-# * `libstrophe_url`
+# * `libmesode_url`
 #  The location of the remote XMPP library source.
 #
-# * `libstrophe_tmp_dir`
+# * `libmesode_tmp_dir`
 #  The location of the XMPP library source on the system from where it will be
 #  built.
+# 
+# * `libmesode_install_dir`
+#  The location libmesode will be installed to - passed into the 'make install' command.
 #
 # * `user`
 #  The system user to manage Profanity for.
@@ -98,8 +101,8 @@ class profanity::params {
       default => false,
     },
     'Debian' => $os[release][major] ? {
-      '8'     => true,
-      default => false,
+      '7'     => false,
+      default => true,
     },
     default  => false,
   }
@@ -131,13 +134,13 @@ class profanity::params {
     }
     default:              {}
   }
-  $version                = '0.5.0'
-  $url                    = 'https://github.com/boothj5/profanity.git'
-  $tmp_dir                = '/var/tmp/profanity'
-  $libstrophe_version     = '0.8.8'
-  $libstrophe_url         = 'https://github.com/strophe/libstrophe.git'
-  $libstrophe_install_dir = '/usr'
-  $libstrophe_tmp_dir     = '/var/tmp/libstrophe'
+  $version                = '0.5.1'
+  $profanity_url          = 'http://profanity.im'
+  $tmp_dir                = '/var/tmp'
+  $libmesode_version      = '0.9.1'
+  $libmesode_url          = 'https://github.com/boothj5/libmesode/archive'
+  $libmesode_tmp_dir      = '/var/tmp'
+  $libmesode_install_dir  = '/usr'
 
   # Configuration details
   $user = 'root'

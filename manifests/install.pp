@@ -11,7 +11,7 @@
 # Copyright
 # ---------
 #
-# Copyright 2016 Jon Ward.
+# Copyright 2017 Jon Ward.
 #
 class profanity::install {
 
@@ -19,29 +19,38 @@ class profanity::install {
   $version = $profanity::version
   $tmp_dir = $profanity::tmp_dir
 
+  $filename         = "profanity-${version}.tar.gz"
+  $full_url         = "${url}/${filename}"
+  $working_dir      = "${tmp_dir}/profanity-${version}"
+
   Exec {
-    cwd => $tmp_dir,
+    cwd => $working_dir,
   }
 
-  profanity::gitrepo { $tmp_dir:
-    ensure   => present,
-    source   => $url,
-    revision => $version,
+  staging::file { $filename:
+    source => $full_url,
+  }
+
+  staging::extract { $filename:
+    target  => $tmp_dir,
+    creates => $working_dir,
+    require => Staging::File[$filename],
+  }
+
+  exec { "bootstrap.sh in ${working_dir}":
+    command => "${working_dir}/bootstrap.sh",
+    require => Staging::Extract[$filename],
   } ~>
 
-  exec { "bootstrap.sh in ${tmp_dir}":
-    command => "${tmp_dir}/bootstrap.sh",
+  exec { "configure in ${working_dir}}":
+    command => "${working_dir}/configure",
   } ~>
 
-  exec { "configure in ${tmp_dir}":
-    command => "${tmp_dir}/configure",
-  } ~>
-
-  exec { "make in ${tmp_dir}":
+  exec { "make in ${working_dir}":
     command => 'make',
   } ~>
 
-  exec { "make install in ${tmp_dir}":
+  exec { "make install in ${working_dir}":
     command => 'make install',
   }
 
