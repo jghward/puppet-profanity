@@ -24,7 +24,7 @@ class profanity::prerequisites {
 
   $libmesode_filename    = "${libmesode_version}.zip"
   $libmesode_full_url    = "${libmesode_url}/${libmesode_filename}"
-  $libmesode_working_dir = "${libmesode_tmp_dir}/${libmesode_version}"
+  $libmesode_working_dir = "${libmesode_tmp_dir}/libmesode-${libmesode_version}"
 
   Exec {
     cwd => $libmesode_working_dir,
