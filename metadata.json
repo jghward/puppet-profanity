@@ -11,6 +11,10 @@
         {
             "name":"puppetlabs-concat",
             "version_requirement":">= 2.1.0 < 3.0.0"
+        },
+        {
+            "name":"puppetlabs-staging",
+            "version_requirement":">= 2.2.0 < 3.0.0"
         }
     ],
     "data_provider":null,
@@ -18,8 +22,9 @@
         {
             "operatingsystem":"Debian",
             "operatingsystemrelease":[
-                "7.0",
-                "8.0"
+                "7",
+                "8",
+                "9"
             ]
         },
         {
@@ -27,15 +32,9 @@
             "operatingsystemrelease":[
                 "12.04",
                 "14.04",
-                "15.10"
-            ]
-        },
-        {
-            "operatingsystem":"CentOS",
-            "operatingsystemrelease":[
-                "7.0"
+                "16.04",
+                "16.10"
             ]
         }
     ]
-
 }
