@@ -120,7 +120,8 @@ class profanity::params {
         'git', 'automake', 'autoconf', 'libssl-dev', 'libexpat1-dev',
         'libncursesw5-dev', 'libglib2.0-dev', 'libnotify-dev',
         'libcurl4-openssl-dev', 'libxss-dev', $libotr_package,
-        'libreadline-dev', 'libtool', 'libgpgme11-dev', 'uuid-dev'
+        'libreadline-dev', 'libtool', 'libgpgme11-dev', 'uuid-dev',
+        'python-dev'
       ]
     }
     'CentOS': {
