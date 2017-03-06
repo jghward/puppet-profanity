@@ -36,6 +36,7 @@ class profanity::prerequisites {
 
   archive { "${libmesode_tmp_dir}/${libmesode_filename}":
     source       => $libmesode_full_url,
+    extract      => true,
     extract_path => $libmesode_tmp_dir,
     creates      => $libmesode_working_dir,
     cleanup      => true,

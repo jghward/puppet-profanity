@@ -29,6 +29,7 @@ class profanity::install {
 
    archive { "${tmp_dir}/${filename}":
     source       => $full_url,
+    extract      => true,
     extract_path => $tmp_dir,
     creates      => $working_dir,
     cleanup      => true,
