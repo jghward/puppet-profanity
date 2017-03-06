@@ -27,19 +27,16 @@ class profanity::install {
     cwd => $working_dir,
   }
 
-  staging::file { $filename:
-    source => $full_url,
-  }
-
-  staging::extract { $filename:
-    target  => $tmp_dir,
-    creates => $working_dir,
-    require => Staging::File[$filename],
-  }
+   archive { "${tmp_dir}/${filename}":
+    source       => $full_url,
+    extract_path => $tmp_dir,
+    creates      => $working_dir,
+    cleanup      => true,
+  } 
 
   exec { "bootstrap.sh in ${working_dir}":
     command => "${working_dir}/bootstrap.sh",
-    require => Staging::Extract[$filename],
+    require => Archive[$filename],
   } ~>
 
   exec { "configure in ${working_dir}}":

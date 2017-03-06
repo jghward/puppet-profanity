@@ -34,19 +34,16 @@ class profanity::prerequisites {
     ensure => installed,
   } ->
 
-  staging::file { $libmesode_filename:
-    source => $libmesode_full_url,
-  }
-
-  staging::extract { $libmesode_filename:
-    target  => $libmesode_tmp_dir,
-    creates => $libmesode_working_dir,
-    require => Staging::File[$libmesode_filename],
+  archive { "${libesode_tmp_dir}/${libmesode_filename}":
+    source       => $libmesode_full_url,
+    extract_path => $libmesode_tmp_dir,
+    creates      => $libmesode_working_dir,
+    cleanup      => true,
   }
 
   exec { "bootstrap.sh in ${libmesode_working_dir}":
     command   => "${libmesode_working_dir}/bootstrap.sh",
-    subscribe => [Package[$prerequisites], Staging::Extract[$libmesode_filename]],
+    subscribe => [Package[$prerequisites], Archive["${libmesode_tmp_dir}/${libmesode_filename}"]],
   } ~>
 
   exec { "configure in ${libmesode_working_dir}":
