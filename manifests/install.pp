@@ -36,7 +36,7 @@ class profanity::install {
 
   exec { "bootstrap.sh in ${working_dir}":
     command => "${working_dir}/bootstrap.sh",
-    require => Archive[$filename],
+    require => Archive["${tmp_dir}/${filename}"],
   } ~>
 
   exec { "configure in ${working_dir}}":
